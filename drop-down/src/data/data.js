@@ -19,7 +19,7 @@ const data = [
   },
   {
     even: {
-      task6: "feed Lili",
+      task7: "feed Lili",
     },
   },
 ];
