@@ -21,11 +21,14 @@
   flex-direction: column;
   border-radius: 5px;
   width: 350px; /* Set a width for the card */
+  background-color: rgb(192, 196, 209);
   height: 100%; /* Set a height for the card */
 }
 
 .listItem {
-  background-color: rgb(192, 196, 209);
+  border-radius: 5px;
+  margin: 5px 7px;
+  background-color: rgb(224, 225, 228);
   color: black;
   padding: 40px;
   border: 1px solid #fcfcfc;
