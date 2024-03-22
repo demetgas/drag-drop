@@ -6,11 +6,13 @@ export default function Task(props) {
     <div>
       <div className="card">
         <div className="header">
-          <div className="title">hello</div>
+          <div className="title">Title</div>
         </div>
         <div className="list">
-          <div className="listItem">hello</div>
-          <div className="listItem">hello</div>
+          <div className="listItem">Task1</div>
+          <div className="listItem">Task2</div>
+          <div className="listItem">Task3</div>
+          <div className="listItem">Task4</div>{" "}
         </div>
       </div>
     </div>
