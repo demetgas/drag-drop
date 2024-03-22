@@ -1,4 +1,6 @@
 import React from "react";
+import "./task.css";
+
 export default function Task(props) {
   return (
     <div>
@@ -7,6 +9,7 @@ export default function Task(props) {
           <div className="title">hello</div>
         </div>
         <div className="list">
+          <div className="listItem">hello</div>
           <div className="listItem">hello</div>
         </div>
       </div>

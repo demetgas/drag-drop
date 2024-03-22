@@ -1,12 +1,15 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .header {
+  border: 1px solid #ccc;
   margin-bottom: 20px; /* Space between title and list */
+}
+
+.title {
+  font-weight: bold; /* Make the font weight bold */
 }
 
 .list {
@@ -16,5 +19,8 @@
 }
 
 .listItem {
-  margin-top: 10px; /* Space between list items */
+  border: 1px solid #ccc;
+
+  margin-top: 20px; /* Increase space between list items */
+  font-weight: bold; /* Make the font weight bold */
 }
