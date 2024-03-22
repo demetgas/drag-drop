@@ -5,7 +5,6 @@
 .header {
   padding: 20px;
   border: 1px solid #ccc;
-  margin-bottom: 20px; /* Space between title and list */
 }
 
 .title {
@@ -18,7 +17,7 @@
 }
 
 .listItem {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ccc;
   margin-top: 20px; /* Increase space between list items */
   font-weight: bold; /* Make the font weight bold */
