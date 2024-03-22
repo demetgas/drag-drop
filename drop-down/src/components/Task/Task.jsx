@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./task.css";
 import data from "../../data/data";
 
 export default function Task(props) {
+  const [titleColors, setTitleColors] = useState({});
+
+  const colors = ["#777984", "#00ff00", "#0000ff"]; // Array of colors
+
   return (
     <div className="cardContainer">
       {data.map((item, index) => {
         const category = Object.keys(item)[0]; // Get the category (e.g., todo, pending, done)
         const tasks = item[category]; // Get the tasks for the category
 
+        // Set color for this category if not already set
+        if (!titleColors[category]) {
+          setTitleColors((prevColors) => ({
+            ...prevColors,
+            [category]: colors[index % colors.length], // Get color from array based on index
+          }));
+        }
+
         return (
           <div key={index} className="card">
-            <div className="header">
+            <div
+              className="header"
+              style={{ backgroundColor: titleColors[category] }}
+            >
               <div className="title">{category}</div>
             </div>
             <div className="list">
