@@ -2,7 +2,7 @@ const data = [
   {
     toDo: {
       task1: "cook",
-      task2: "finish teh dishes",
+      task2: "finish the dishes",
       task3: "start the washing machine",
       task4: "groceries",
     },
@@ -14,7 +14,7 @@ const data = [
   },
   {
     done: {
-      task6: "buy the books",
+      task6: "feed Lili",
     },
   },
 ];

@@ -6,6 +6,7 @@
 }
 
 .header {
+  border-radius: 5px;
   padding: 50px;
   border: 1px solid #ccc;
   background-color: #777984;
@@ -19,6 +20,7 @@
 .list {
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 }
 
 .listItem {
