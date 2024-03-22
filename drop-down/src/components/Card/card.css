@@ -1,9 +1,7 @@
 .card {
-  background-color: aliceblue;
   align-items: center;
   justify-content: space-between;
-  width: 300px; /* Set a width for the card */
+  width: 350px; /* Set a width for the card */
   height: 100%; /* Set a height for the card */
-  border: 1px solid #ccc;
   border-radius: 5px;
 }

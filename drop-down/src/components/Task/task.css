@@ -3,12 +3,14 @@
 }
 
 .header {
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #ccc;
+  background-color: #777984;
 }
 
 .title {
   font-weight: bold; /* Make the font weight bold */
+  color: white;
 }
 
 .list {
@@ -17,8 +19,9 @@
 }
 
 .listItem {
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-top: 20px; /* Increase space between list items */
+  background-color: rgb(192, 196, 209);
+  color: black;
+  padding: 40px;
+  border: 1px solid #fcfcfc;
   font-weight: bold; /* Make the font weight bold */
 }
