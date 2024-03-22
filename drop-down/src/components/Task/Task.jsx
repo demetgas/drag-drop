@@ -4,8 +4,8 @@ import data from "../../data/data";
 
 export default function Task(props) {
   const [titleColors, setTitleColors] = useState({});
-
-  const colors = ["#777984", "#00ff00", "#0000ff"]; // Array of colors
+  const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
+  console.log("Title Colors:", titleColors);
 
   return (
     <div className="cardContainer">
