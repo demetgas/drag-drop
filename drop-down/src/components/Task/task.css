@@ -1,5 +1,8 @@
 .card {
   border-radius: 5px;
+  display: inline-block; /* Display cards as inline-block to show them in a row */
+  margin-right: 20px; /* Add some space between cards */
+  margin-bottom: 20px; /* Add some space below cards */
 }
 
 .header {
@@ -9,7 +12,7 @@
 }
 
 .title {
-  font-weight: bold; /* Make the font weight bold */
+  font-weight: bold;
   color: white;
 }
 
@@ -23,5 +26,5 @@
   color: black;
   padding: 40px;
   border: 1px solid #fcfcfc;
-  font-weight: bold; /* Make the font weight bold */
+  font-weight: bold;
 }
