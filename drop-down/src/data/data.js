@@ -17,6 +17,11 @@ const data = [
       task6: "feed Lili",
     },
   },
+  {
+    even: {
+      task6: "feed Lili",
+    },
+  },
 ];
 
 export default data;

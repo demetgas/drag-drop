@@ -20,6 +20,12 @@ export default function Task(props) {
             [category]: colors[index % colors.length], // Get color from array based on index
           }));
         }
+        const titleMap = {
+          toDo: "To Do",
+          pending: "Pending",
+          done: "Done",
+          even: "Even",
+        };
 
         return (
           <div key={index} className="card">
@@ -27,7 +33,7 @@ export default function Task(props) {
               className="header"
               style={{ backgroundColor: titleColors[category] }}
             >
-              <div className="title">{category}</div>
+              <div className="title">{titleMap[category]}</div>
             </div>
             <div className="list">
               {Object.values(tasks).map((task, index) => (
