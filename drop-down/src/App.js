@@ -1,11 +1,11 @@
 import "./App.css";
-import Card from "./components/Card/Card";
+import Task from "./components/Task/Task";
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        <Card />
+        <Task />
       </div>
     </div>
   );
