@@ -62,6 +62,7 @@ export default function Task(props, id) {
                         )}
                       </Draggable>
                     ))}
+                    {provided.placeholder}
                   </div>
                 )}
               </Droppable>
