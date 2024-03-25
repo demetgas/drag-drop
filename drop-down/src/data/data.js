@@ -1,19 +1,24 @@
 const data = [
   {
     toDo: {
-      task1: "cook",
-      task2: "finish the dishes",
-      task3: "start the washing machine",
-      task4: "groceries",
-      task5: "get the cargo",
-      task6: "feed Lili",
+      task1: "Task 1",
+      task2: "Task 2",
+      task3: "Task 3",
+      task4: "Task 4",
     },
   },
   {
-    pending: {},
+    pending: {
+      task5: "Task 5",
+      task6: "Task 6",
+      task7: "Task 7",
+    },
   },
   {
-    done: {},
+    done: {
+      task8: "Task 8 ",
+      task9: "Task 9",
+    },
   },
   {
     even: {},
