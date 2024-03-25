@@ -9,7 +9,7 @@ const data = [
     },
   },
   {
-    id: "Pending",
+    id: "In Progress",
     tasks: {
       task5: "Task 5",
       task6: "Task 6",
