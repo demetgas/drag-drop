@@ -1,8 +1,8 @@
 .card {
   border-radius: 5px;
-  display: inline-block; /* Display cards as inline-block to show them in a row */
-  margin-right: 20px; /* Add some space between cards */
-  margin-bottom: 20px; /* Add some space below cards */
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .header {
@@ -20,9 +20,9 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  width: 350px; /* Set a width for the card */
+  width: 350px;
   background-color: rgb(192, 196, 209);
-  height: 680px; /* Set a height for the card */
+  height: 680px;
 }
 
 .listItem {
