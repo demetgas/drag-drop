@@ -9,35 +9,31 @@ export default function Card() {
 
   return (
     <div className="cardContainer">
-      {data.map((item, index) => {
-        const category = Object.keys(item)[0]; // Get the category (e.g., todo, pending, done)
-        const tasks = item[category]; // Get the tasks for the category
+      {data.map((x, index) => {
+        const id = x.id; // Get the category id (e.g., "To Do", "Pending", "Done", "Even")
+        const tasks = x.tasks; //Get the tasks for the category
 
         // Set color for this category if not already set
-        if (!titleColors[category]) {
+        if (!titleColors[id]) {
           setTitleColors((prevColors) => ({
             ...prevColors,
-            [category]: colors[index % colors.length], // Get color from array based on index
+            [id]: colors[index % colors.length], // Get color from array based on index
           }));
         }
-        const titleMap = {
-          toDo: "To Do",
-          pending: "Pending",
-          done: "Done",
-          even: "Even",
-        };
 
         return (
           <div key={index} className="card">
             <div
               className="header"
-              style={{ backgroundColor: titleColors[category] }}
+              style={{ backgroundColor: titleColors[id] }}
             >
-              <div className="title">{titleMap[category]}</div>
+              <div className="title">{id}</div>
             </div>
             <div className="list">
               {Object.values(tasks).map((task, index) => (
-                <div className="listItem">{task}</div>
+                <div className="listItem" draggable="true">
+                  {task}
+                </div>
               ))}
             </div>
             ;
