@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./task.css";
 import data from "../../data/data";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 export default function Task(props, id) {
   const [titleColors, setTitleColors] = useState({});
@@ -35,13 +36,36 @@ export default function Task(props, id) {
             >
               <div className="title">{titleMap[category]}</div>
             </div>
-            <div className="list">
-              {Object.values(tasks).map((task, index) => (
-                <div key={index} className="listItem">
-                  {task}
-                </div>
-              ))}
-            </div>
+            <DragDropContext>
+              <Droppable droppableId={category} key={category}>
+                {(provided) => (
+                  <div
+                    className="list"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {Object.values(tasks).map((task, index) => (
+                      <Draggable
+                        key={`${category}-${index}`}
+                        draggableId={`${category}-${index}`}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            className="listItem"
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            ref={provided.innerRef}
+                          >
+                            {task}
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
             ;
           </div>
         );
