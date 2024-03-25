@@ -3,7 +3,7 @@ import "./task.css";
 import data from "../../data/data";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
-export default function Task(props, id) {
+export default function Task() {
   const [titleColors, setTitleColors] = useState({});
   const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
   console.log("Title Colors:", titleColors);
