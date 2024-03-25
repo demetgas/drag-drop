@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./task.css";
 import data from "../../data/data";
-import { Droppable } from "react-beautiful-dnd";
 
 export default function Task(props, id) {
   const [titleColors, setTitleColors] = useState({});
@@ -36,22 +35,14 @@ export default function Task(props, id) {
             >
               <div className="title">{titleMap[category]}</div>
             </div>
-            <Droppable droppableId={id}>
-              {(provided, snapshot) => {
-                <div
-                  className="list"
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  isDraggingOver={snapshot.isDraggingOver}
-                >
-                  {Object.values(tasks).map((task, index) => (
-                    <div key={index} className="listItem">
-                      {task}
-                    </div>
-                  ))}
-                </div>;
-              }}
-            </Droppable>
+            <div className="list">
+              {Object.values(tasks).map((task, index) => (
+                <div key={index} className="listItem">
+                  {task}
+                </div>
+              ))}
+            </div>
+            ;
           </div>
         );
       })}
