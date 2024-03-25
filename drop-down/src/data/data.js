@@ -9,7 +9,7 @@ const data = [
     },
   },
   {
-    id: "pending",
+    id: "Pending",
     tasks: {
       task5: "Task 5",
       task6: "Task 6",
@@ -17,15 +17,11 @@ const data = [
     },
   },
   {
-    id: "done",
+    id: "Done",
     tasks: {
       task8: "Task 8 ",
       task9: "Task 9",
     },
-  },
-  {
-    id: "even",
-    tasks: {},
   },
 ];
 
