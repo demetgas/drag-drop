@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./task.css";
 import data from "../../data/data";
-import DragDropContext from "react-draggable";
 
 export default function Task(props) {
   const [titleColors, setTitleColors] = useState({});
@@ -38,11 +37,9 @@ export default function Task(props) {
             </div>
             <div className="list">
               {Object.values(tasks).map((task, index) => (
-                <DragDropContext>
-                  <div key={index} className="listItem">
-                    {task}
-                  </div>
-                </DragDropContext>
+                <div key={index} className="listItem">
+                  {task}
+                </div>
               ))}
             </div>
           </div>
