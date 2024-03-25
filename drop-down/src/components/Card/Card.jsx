@@ -30,9 +30,9 @@ export default function Card() {
               <div className="title">{id}</div>
             </div>
             <div className="list">
-              {Object.values(tasks).map((task, index) => (
-                <div className="listItem" draggable="true">
-                  {task}
+              {Object.entries(tasks).map(([taskId, taskName]) => (
+                <div key={taskId} className="listItem" draggable="true">
+                  {taskName}
                 </div>
               ))}
             </div>
