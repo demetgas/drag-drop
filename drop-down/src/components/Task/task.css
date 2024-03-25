@@ -22,7 +22,7 @@
   border-radius: 5px;
   width: 350px; /* Set a width for the card */
   background-color: rgb(192, 196, 209);
-  height: 100%; /* Set a height for the card */
+  height: 450px; /* Set a height for the card */
 }
 
 .listItem {
