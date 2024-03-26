@@ -11,7 +11,10 @@ export default function Card() {
 
   const handleDrop = (e, newCategoryId) => {
     const taskId = e.dataTransfer.getData("id");
-    console.log("Dropped task ID:", taskId);
+    const taskNumber = parseInt(taskId.replace("task", ""));
+    if (newCategoryId === "Even" && taskNumber % 2 !== 0) {
+      return;
+    }
 
     const newData = array.map((category) => {
       if (category.id === newCategoryId) {
