@@ -80,7 +80,7 @@ export default function Card() {
                   {taskId}
                 </div>
               ))}
-              {Object.values(tasks).length > 4 && (
+              {Object.values(tasks).length > 6 && (
                 <button className="btn" onClick={() => loadMore(id)}>
                   Load More
                 </button>
