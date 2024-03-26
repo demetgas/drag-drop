@@ -4,16 +4,15 @@ import data from "../../data/data";
 
 export default function Card() {
   const [titleColors, setTitleColors] = useState({});
-  const [load, setLoad] = useState({});
-  const [isShown, setIsShown] = useState(false);
   const [array, setArray] = useState(data);
+  const [showMoreTasks, setShowMoreTasks] = useState({});
+
   const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
 
   const handleDrop = (e, newCategoryId) => {
     const taskId = e.dataTransfer.getData("id");
     console.log("Dropped task ID:", taskId);
 
-    // Find the category in the data array
     const newData = array.map((category) => {
       if (category.id === newCategoryId) {
         return {
@@ -33,26 +32,32 @@ export default function Card() {
       }
     });
 
-    // Update the data array
     setArray(newData);
   };
 
-  const loadMore = (id) => {
-    setLoad((prev) => ({ ...prev, [id]: !prev[id] }));
+  const toggleShowMoreTasks = (categoryId) => {
+    setShowMoreTasks((prevState) => ({
+      ...prevState,
+      [categoryId]: !prevState[categoryId],
+    }));
   };
+
   return (
     <div className="cardContainer">
       {array.map((x, index) => {
-        const id = x.id; // Get the category id (e.g., "To Do", "Pending", "Done", "Even")
-        const tasks = x.tasks; // Get the tasks for the category
+        const id = x.id;
+        const tasks = x.tasks;
 
-        // Set color for this category if not already set
         if (!titleColors[id]) {
           setTitleColors((prevColors) => ({
             ...prevColors,
-            [id]: colors[index % colors.length], // Get color from array based on index
+            [id]: colors[index % colors.length],
           }));
         }
+
+        const displayTasks = showMoreTasks[id]
+          ? Object.entries(tasks)
+          : Object.entries(tasks).slice(0, 5);
 
         return (
           <div key={index} className="card">
@@ -67,7 +72,7 @@ export default function Card() {
               onDrop={(e) => handleDrop(e, id)}
               onDragOver={(e) => e.preventDefault()}
             >
-              {Object.entries(tasks).map(([taskId, task]) => (
+              {displayTasks.map(([taskId, task]) => (
                 <div
                   key={taskId}
                   className="listItem"
@@ -81,8 +86,8 @@ export default function Card() {
                 </div>
               ))}
               {Object.values(tasks).length > 5 && (
-                <button className="btn" onClick={() => loadMore(id)}>
-                  Load More
+                <button className="btn" onClick={() => toggleShowMoreTasks(id)}>
+                  {showMoreTasks[id] ? "Show Less" : "Load More"}
                 </button>
               )}
             </div>
