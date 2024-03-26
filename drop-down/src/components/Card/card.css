@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  width: 350px;
   background-color: rgb(192, 196, 209);
   height: 680px;
 }
@@ -31,7 +30,19 @@
   background-color: rgb(224, 225, 228);
   color: black;
   padding: 40px;
+  width: 250px;
   border: 1px solid #fcfcfc;
   font-weight: bold;
   cursor: pointer;
+}
+.btn {
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto; /* Center the button horizontally */
+  margin-top: auto; /* Align the button to the bottom */
+  margin-bottom: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(74, 83, 112);
 }

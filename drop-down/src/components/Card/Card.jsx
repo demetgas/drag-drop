@@ -4,14 +4,42 @@ import data from "../../data/data";
 
 export default function Card() {
   const [titleColors, setTitleColors] = useState({});
+  const [array, setArray] = useState(data); // Initialize state with data
   const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
-  console.log("Title Colors:", titleColors);
+
+  const handleDrop = (e, newCategoryId) => {
+    const taskId = e.dataTransfer.getData("id");
+    console.log("Dropped task ID:", taskId);
+
+    // Find the category in the data array
+    const newData = array.map((category) => {
+      if (category.id === newCategoryId) {
+        return {
+          ...category,
+          tasks: {
+            ...category.tasks,
+            [taskId]: array.find((cat) => cat.tasks[taskId]),
+          },
+        };
+      } else {
+        const newTasks = { ...category.tasks };
+        delete newTasks[taskId];
+        return {
+          ...category,
+          tasks: newTasks,
+        };
+      }
+    });
+
+    // Update the data array
+    setArray(newData);
+  };
 
   return (
     <div className="cardContainer">
-      {data.map((x, index) => {
+      {array.map((x, index) => {
         const id = x.id; // Get the category id (e.g., "To Do", "Pending", "Done", "Even")
-        const tasks = x.tasks; //Get the tasks for the category
+        const tasks = x.tasks; // Get the tasks for the category
 
         // Set color for this category if not already set
         if (!titleColors[id]) {
@@ -29,20 +57,25 @@ export default function Card() {
             >
               <div className="title">{id}</div>
             </div>
-            <div className="list">
-              {Object.entries(tasks).map(([taskId, taskName]) => (
+            <div
+              className="list"
+              onDrop={(e) => handleDrop(e, id)}
+              onDragOver={(e) => e.preventDefault()}
+            >
+              {Object.entries(tasks).map(([taskId, task]) => (
                 <div
                   key={taskId}
                   className="listItem"
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.setData("id", taskId);
-                    console.log(taskName);
+                    console.log(task);
                   }}
                 >
-                  {taskName}
+                  {taskId}
                 </div>
               ))}
+              <button className="btn">Load More</button>
             </div>
           </div>
         );
