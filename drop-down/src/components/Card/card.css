@@ -4,19 +4,20 @@
 }
 
 .cardContainer {
-  width: 260px;
+  width: 100%;
   display: flex;
 }
 
 .header {
   border-radius: 5px;
-  padding: 50px;
+  padding: 45px;
   border: 1px solid #ccc;
 }
 
 .title {
   font-weight: bold;
   color: white;
+  width: 250px;
 }
 
 .list {
