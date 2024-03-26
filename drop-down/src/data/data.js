@@ -31,8 +31,8 @@ const data = [
     id: "Even",
     tasks: {
       task14: "Task 14",
-      task15: "Task 15 ",
-      task16: "Task 16",
+      task16: "Task 16 ",
+      task18: "Task 18",
     },
   },
 ];
