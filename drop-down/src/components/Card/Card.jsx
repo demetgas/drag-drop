@@ -31,7 +31,15 @@ export default function Card() {
             </div>
             <div className="list">
               {Object.entries(tasks).map(([taskId, taskName]) => (
-                <div key={taskId} className="listItem" draggable>
+                <div
+                  key={taskId}
+                  className="listItem"
+                  draggable
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData("id", taskId);
+                    console.log(taskName);
+                  }}
+                >
                   {taskName}
                 </div>
               ))}
