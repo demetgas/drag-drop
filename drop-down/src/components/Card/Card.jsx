@@ -4,7 +4,8 @@ import data from "../../data/data";
 
 export default function Card() {
   const [titleColors, setTitleColors] = useState({});
-  const [showAllTasks, setShowAllTasks] = useState({});
+  const [load, setLoad] = useState({});
+  const [isShown, setIsShown] = useState(false);
   const [array, setArray] = useState(data);
   const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
 
@@ -37,9 +38,8 @@ export default function Card() {
   };
 
   const loadMore = (id) => {
-    setShowAllTasks((prev) => ({ ...prev, [id]: !prev[id] }));
+    setLoad((prev) => ({ ...prev, [id]: !prev[id] }));
   };
-
   return (
     <div className="cardContainer">
       {array.map((x, index) => {
@@ -80,7 +80,7 @@ export default function Card() {
                   {taskId}
                 </div>
               ))}
-              {Object.values(tasks).length > 6 && (
+              {Object.values(tasks).length > 5 && (
                 <button className="btn" onClick={() => loadMore(id)}>
                   Load More
                 </button>

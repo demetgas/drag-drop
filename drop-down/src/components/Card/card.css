@@ -22,6 +22,7 @@
   border-radius: 5px;
   background-color: rgb(192, 196, 209);
   height: 680px;
+  overflow-y: auto;
 }
 
 .listItem {
@@ -34,6 +35,7 @@
   border: 1px solid #fcfcfc;
   font-weight: bold;
   cursor: pointer;
+  overflow: visible;
 }
 
 .btn {
