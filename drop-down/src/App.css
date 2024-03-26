@@ -2,12 +2,11 @@
   background-color: #292727;
 }
 .App {
-  text-align: center;
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #292727;
-  margin-left: 35rem;
 }
 .App-logo {
   height: 40vmin;
