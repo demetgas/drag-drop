@@ -9,11 +9,6 @@
   background-color: #292727;
   margin-left: 35rem;
 }
-.container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
