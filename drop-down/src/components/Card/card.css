@@ -1,8 +1,11 @@
 .card {
   border-radius: 5px;
-  display: inline-block;
   margin-right: 20px;
-  margin-bottom: 20px;
+}
+
+.cardContainer {
+  width: 260px;
+  display: flex;
 }
 
 .header {
@@ -23,6 +26,7 @@
   background-color: rgb(192, 196, 209);
   height: 680px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .listItem {
