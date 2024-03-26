@@ -34,6 +34,7 @@ export default function Card() {
     // Update the data array
     setArray(newData);
   };
+  function load() {}
 
   return (
     <div className="cardContainer">
@@ -75,7 +76,11 @@ export default function Card() {
                   {taskId}
                 </div>
               ))}
-              <button className="btn">Load More</button>
+              {Object.values(tasks).length > 4 && (
+                <button className="btn" onClick={load}>
+                  Load More
+                </button>
+              )}
             </div>
           </div>
         );
