@@ -67,25 +67,25 @@ export default function Card() {
               onDrop={(e) => handleDrop(e, id)}
               onDragOver={(e) => e.preventDefault()}
             >
-              {Object.entries(tasks)
-                .slice(0, showAllTasks[id] ? tasks.length : 6)
-                .map(([taskId, task]) => (
-                  <div
-                    key={taskId}
-                    className="listItem"
-                    draggable
-                    onDragStart={(e) => {
-                      e.dataTransfer.setData("id", taskId);
-                      console.log(task);
-                    }}
-                  >
-                    {taskId}
-                  </div>
-                ))}
+              {Object.entries(tasks).map(([taskId, task]) => (
+                <div
+                  key={taskId}
+                  className="listItem"
+                  draggable
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData("id", taskId);
+                    console.log(task);
+                  }}
+                >
+                  {taskId}
+                </div>
+              ))}
+              {Object.values(tasks).length > 6 && (
+                <button className="btn" onClick={() => loadMore(id)}>
+                  Load More
+                </button>
+              )}
             </div>
-            {Object.values(tasks).length > 6 && (
-              <button className="btn" onClick={() => loadMore(id)}></button>
-            )}
           </div>
         );
       })}
