@@ -46,8 +46,8 @@
 .btn {
   border-radius: 5px;
   padding: 10px;
-  margin: auto; /* Center the button horizontally */
-  margin-top: auto; /* Align the button to the bottom */
+  margin: auto;
+  margin-top: auto;
   margin-bottom: 20px;
   border: none;
   color: white;
