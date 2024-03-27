@@ -15,25 +15,27 @@ export default function Card() {
 
     const updatedData = array.map((titleName) => {
       if (titleName.id === newTitleId) {
+        //if the task gets dropped to the same card return
         if (titleName.tasks.find((task) => task.name === taskId)) {
-          // Task is being dropped onto the same card, return early
           return titleName;
         }
+        //add the task to the new card
         return {
           ...titleName,
-          tasks: [...titleName.tasks, { name: taskId }], // Add the dropped task to the new titleName
+          tasks: [...titleName.tasks, { name: taskId }],
         };
       } else {
+        //remove the task from the old card
         return {
           ...titleName,
-          tasks: titleName.tasks.filter((task) => task.name !== taskId), // Remove the task from the current titleName
+          tasks: titleName.tasks.filter((task) => task.name !== taskId),
         };
       }
     });
 
     setArray(updatedData);
   };
-
+  //when on clicked if setshowmoretasks is true make it false, if false make it true
   const toggleShowMoreTasks = (titleNameId) => {
     setShowMoreTasks((prevState) => ({
       ...prevState,
@@ -48,7 +50,7 @@ export default function Card() {
         const tasks = arrayItem.tasks;
         const color = arrayItem.backgroundColor;
 
-        // Check if tasks is an array before slicing
+        // if showmoretasks is true display all tasks, if false display only 5
         const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 5);
 
         return (
