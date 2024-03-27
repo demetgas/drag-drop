@@ -1,39 +1,28 @@
 const data = [
   {
     id: "To Do",
-    tasks: {
-      task1: "task1",
-      task2: "task2",
-      task3: "task3",
-      task4: "task4",
-      task5: "task5",
-      task6: "task6",
-      task7: "task7",
-      task8: "task8 ",
-    },
+    tasks: [
+      { name: "task 1" },
+      { name: "task 2" },
+      { name: "task 3" },
+      { name: "task 4" },
+      { name: "task 5" },
+      { name: "task 6" },
+      { name: "task 7" },
+      { name: "task 8" },
+    ],
   },
   {
     id: "In Progress",
-    tasks: {
-      task9: "task9",
-      task10: "task10 ",
-    },
+    tasks: [{ name: "task 9" }, { name: "task 10" }],
   },
   {
     id: "Done",
-    tasks: {
-      task11: "task11",
-      task12: "task12 ",
-      task13: "task13",
-    },
+    tasks: [{ name: "task 11" }, { name: "task 12" }, { name: "task 13" }],
   },
   {
     id: "Even",
-    tasks: {
-      task14: "task14",
-      task16: "task16 ",
-      task18: "task18",
-    },
+    tasks: [{ name: "task 14" }, { name: "task 16" }, { name: "task 18" }],
   },
 ];
 

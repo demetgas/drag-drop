@@ -16,26 +16,21 @@ export default function Card() {
       return;
     }
 
-    const newData = array.map((category) => {
+    const updatedData = array.map((category) => {
       if (category.id === newCategoryId) {
         return {
           ...category,
-          tasks: {
-            ...category.tasks,
-            [taskId]: array.find((cat) => cat.tasks[taskId]),
-          },
+          tasks: [...category.tasks, { name: taskId }], // Add the dropped task to the new category
         };
       } else {
-        const newTasks = { ...category.tasks };
-        delete newTasks[taskId];
         return {
           ...category,
-          tasks: newTasks,
+          tasks: category.tasks.filter((task) => task.name !== taskId), // Remove the task from the current category
         };
       }
     });
 
-    setArray(newData);
+    setArray(updatedData);
   };
 
   const toggleShowMoreTasks = (categoryId) => {
@@ -58,9 +53,8 @@ export default function Card() {
           }));
         }
 
-        const displayTasks = showMoreTasks[id]
-          ? Object.entries(tasks)
-          : Object.entries(tasks).slice(0, 5);
+        // Check if tasks is an array before slicing
+        const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 5);
 
         return (
           <div key={index} className="card">
@@ -75,20 +69,19 @@ export default function Card() {
               onDrop={(e) => handleDrop(e, id)}
               onDragOver={(e) => e.preventDefault()}
             >
-              {displayTasks.map(([taskId, task]) => (
+              {displayTasks.map((task, taskIndex) => (
                 <div
-                  key={taskId}
+                  key={taskIndex}
                   className="listItem"
                   draggable
                   onDragStart={(e) => {
-                    e.dataTransfer.setData("id", taskId);
-                    console.log(task);
+                    e.dataTransfer.setData("id", task.name);
                   }}
                 >
-                  {taskId}
+                  {task.name}
                 </div>
               ))}
-              {Object.values(tasks).length > 5 && (
+              {tasks.length > 5 && (
                 <button className="btn" onClick={() => toggleShowMoreTasks(id)}>
                   {showMoreTasks[id] ? "Show Less" : "Load More"}
                 </button>
