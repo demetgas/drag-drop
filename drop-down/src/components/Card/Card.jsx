@@ -3,11 +3,8 @@ import "./card.css";
 import data from "../../data/data";
 
 export default function Card() {
-  const [titleColors, setTitleColors] = useState({});
   const [array, setArray] = useState(data);
   const [showMoreTasks, setShowMoreTasks] = useState({});
-
-  const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
 
   const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
@@ -46,26 +43,17 @@ export default function Card() {
 
   return (
     <div className="cardContainer">
-      {array.map((arrayItem, index) => {
+      {array.map((arrayItem, index, backgroundColor) => {
         const id = arrayItem.id;
         const tasks = arrayItem.tasks;
-
-        if (!titleColors[id]) {
-          setTitleColors((prevColors) => ({
-            ...prevColors,
-            [id]: colors[index % colors.length],
-          }));
-        }
+        const color = arrayItem.backgroundColor;
 
         // Check if tasks is an array before slicing
         const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 5);
 
         return (
           <div key={index} className="card">
-            <div
-              className="header"
-              style={{ backgroundColor: titleColors[id] }}
-            >
+            <div className="header" style={{ backgroundColor: color }}>
               <div className="title">{id}</div>
             </div>
             <div
