@@ -46,9 +46,9 @@ export default function Card() {
 
   return (
     <div className="cardContainer">
-      {array.map((x, index) => {
-        const id = x.id;
-        const tasks = x.tasks;
+      {array.map((arrayItem, index) => {
+        const id = arrayItem.id;
+        const tasks = arrayItem.tasks;
 
         if (!titleColors[id]) {
           setTitleColors((prevColors) => ({
