@@ -42,10 +42,6 @@
   overflow: visible;
 }
 
-.current {
-  background-color: #282c34;
-}
-
 .btn {
   border-radius: 5px;
   padding: 10px;

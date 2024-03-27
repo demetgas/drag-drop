@@ -11,21 +11,18 @@ export default function Card() {
   const dragItemNode = useRef();
 
   const handleDragStart = (e, taskName, params) => {
-    console.log("gello", params);
+    console.log("hello", params);
     e.dataTransfer.setData("id", taskName);
-    dragItem.current = params;
+    dragItem.current = { ...params, task: { name: taskName } }; // Set the task property
     dragItemNode.current = e.target;
     dragItemNode.current.addEventListener("dragend", handleDragEnd);
     setDragging(true);
   };
-  const getStyles = (params) => {
+
+  const getStyles = (params, taskName) => {
     const currentItem = dragItem.current;
-    if (
-      currentItem &&
-      currentItem.taskId === params.id &&
-      currentItem.task.name === params.task.name
-    ) {
-      return { backgroundColor: "yellow" }; // Set the desired background color here
+    if (currentItem && currentItem.task && currentItem.task.name === taskName) {
+      return { backgroundColor: "#989aa1" };
     }
     return null;
   };
@@ -48,17 +45,17 @@ export default function Card() {
 
     const updatedData = array.map((titleName) => {
       if (titleName.id === newTitleId) {
-        //if the task gets dropped to the same card return
-        if (titleName.tasks.find((task) => task.name === taskNumber)) {
+        // if the task gets dropped to the same card return
+        if (titleName.tasks.find((task) => task.name === taskId)) {
           return titleName;
         }
-        //add the task to the new card
+        // add the task to the new card
         return {
           ...titleName,
           tasks: [...titleName.tasks, { name: taskId }],
         };
       } else {
-        //remove the task from the old card
+        // remove the task from the old card
         return {
           ...titleName,
           tasks: titleName.tasks.filter((task) => task.name !== taskId),
@@ -68,6 +65,7 @@ export default function Card() {
 
     setArray(updatedData);
   };
+
   //when on clicked if setshowmoretasks is true make it false, if false make it true
   const toggleShowMoreTasks = (titleNameId) => {
     setShowMoreTasks((prevState) => ({
@@ -104,7 +102,7 @@ export default function Card() {
                   onDragStart={(e) =>
                     handleDragStart(e, task.name, { id, tasks })
                   }
-                  style={dragging ? getStyles({ id, tasks }) : null}
+                  style={dragging ? getStyles({ id, tasks }, task.name) : null}
                 >
                   {task.name}
                 </div>
