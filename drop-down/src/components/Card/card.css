@@ -42,6 +42,10 @@
   overflow: visible;
 }
 
+.listItem:hover {
+  background-color: rgb(158, 169, 188);
+}
+
 .btn {
   border-radius: 5px;
   padding: 10px;
