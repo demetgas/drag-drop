@@ -9,23 +9,23 @@ export default function Card() {
 
   const colors = ["#A54B4A", "#4A71A5", "#4AA561", "#A5A14A"];
 
-  const handleDrop = (e, newCategoryId) => {
+  const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
     const taskNumber = parseInt(taskId.replace("task", ""));
-    if (newCategoryId === "Even" && taskNumber % 2 !== 0) {
+    if (newTitleId === "Even" && taskNumber % 2 !== 0) {
       return;
     }
 
-    const updatedData = array.map((category) => {
-      if (category.id === newCategoryId) {
+    const updatedData = array.map((titleName) => {
+      if (titleName.id === newTitleId) {
         return {
-          ...category,
-          tasks: [...category.tasks, { name: taskId }], // Add the dropped task to the new category
+          ...titleName,
+          tasks: [...titleName.tasks, { name: taskId }], // Add the dropped task to the new titleName
         };
       } else {
         return {
-          ...category,
-          tasks: category.tasks.filter((task) => task.name !== taskId), // Remove the task from the current category
+          ...titleName,
+          tasks: titleName.tasks.filter((task) => task.name !== taskId), // Remove the task from the current titleName
         };
       }
     });
@@ -33,10 +33,10 @@ export default function Card() {
     setArray(updatedData);
   };
 
-  const toggleShowMoreTasks = (categoryId) => {
+  const toggleShowMoreTasks = (titleNameId) => {
     setShowMoreTasks((prevState) => ({
       ...prevState,
-      [categoryId]: !prevState[categoryId],
+      [titleNameId]: !prevState[titleNameId],
     }));
   };
 
