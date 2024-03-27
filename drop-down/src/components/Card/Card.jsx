@@ -18,6 +18,10 @@ export default function Card() {
 
     const updatedData = array.map((titleName) => {
       if (titleName.id === newTitleId) {
+        if (titleName.tasks.find((task) => task.name === taskId)) {
+          // Task is being dropped onto the same card, return early
+          return titleName;
+        }
         return {
           ...titleName,
           tasks: [...titleName.tasks, { name: taskId }], // Add the dropped task to the new titleName
