@@ -6,6 +6,10 @@ export default function Card() {
   const [array, setArray] = useState(data);
   const [showMoreTasks, setShowMoreTasks] = useState({});
 
+  const handleDragStart = (e, taskName) => {
+    e.dataTransfer.setData("id", taskName);
+  };
+
   const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
     const taskNumber = parseInt(taskId.replace("task", ""));
@@ -68,9 +72,7 @@ export default function Card() {
                   key={taskIndex}
                   className="listItem"
                   draggable
-                  onDragStart={(e) => {
-                    e.dataTransfer.setData("id", task.name);
-                  }}
+                  onDragStart={(e) => handleDragStart(e, task.name)}
                 >
                   {task.name}
                 </div>
