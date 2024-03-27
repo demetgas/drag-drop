@@ -42,8 +42,8 @@
   overflow: visible;
 }
 
-.listItem:hover {
-  background-color: rgb(158, 169, 188);
+.current {
+  background-color: #282c34;
 }
 
 .btn {
