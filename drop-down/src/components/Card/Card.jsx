@@ -93,7 +93,7 @@ export default function Card() {
 
   return (
     <div className="cardContainer">
-      {array.map((arrayItem, index) => {
+      {array.map((arrayItem) => {
         const id = arrayItem.id;
         const tasks = arrayItem.tasks;
         const color = arrayItem.backgroundColor;
@@ -102,7 +102,7 @@ export default function Card() {
         const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 5);
 
         return (
-          <div key={index} className="card">
+          <div key={id} className="card">
             <div className="header" style={{ backgroundColor: color }}>
               <div className="title">{id}</div>
             </div>
