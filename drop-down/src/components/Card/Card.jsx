@@ -8,14 +8,14 @@ export default function Card() {
   const [dragging, setDragging] = useState(false);
 
   const dragItem = useRef();
-  const dragItemNode = useRef();
+  const dragNode = useRef();
 
   const handleDragStart = (e, taskName, params) => {
     console.log("hello", params);
     e.dataTransfer.setData("id", taskName);
     dragItem.current = { ...params, task: { name: taskName } }; // Set the task property
-    dragItemNode.current = e.target;
-    dragItemNode.current.addEventListener("dragend", handleDragEnd);
+    dragNode.current = e.target;
+    dragNode.current.addEventListener("dragend", handleDragEnd);
     setTimeout(() => {
       setDragging(true);
     }, 0);
@@ -35,11 +35,11 @@ export default function Card() {
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
-    if (dragItemNode.current) {
-      dragItemNode.current.removeEventListener("dragend", handleDragEnd);
+    if (dragNode.current) {
+      dragNode.current.removeEventListener("dragend", handleDragEnd);
     }
     dragItem.current = null;
-    dragItemNode.current = null;
+    dragNode.current = null;
   };
   const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
