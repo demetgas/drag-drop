@@ -48,6 +48,7 @@ export default function Card() {
     dragItem.current = null;
     dragNode.current = null;
   };
+
   const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
     const taskNumber = parseInt(taskId.replace("task", ""));
