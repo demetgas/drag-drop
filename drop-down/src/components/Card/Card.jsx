@@ -24,7 +24,10 @@ export default function Card() {
   const getStyles = (params, taskName) => {
     const currentItem = dragItem.current;
     if (currentItem && currentItem.task && currentItem.task.name === taskName) {
-      return { backgroundColor: "rgb(192, 196, 209)" };
+      return {
+        backgroundColor: "rgb(192, 196, 209)",
+        color: "transparent",
+      };
     }
     return null;
   };
