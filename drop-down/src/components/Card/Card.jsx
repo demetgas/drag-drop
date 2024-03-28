@@ -100,7 +100,7 @@ export default function Card() {
                   className="listItem"
                   draggable
                   onDragStart={(e) =>
-                    handleDragStart(e, task.name, { id, tasks })
+                    handleDragStart(e, task.name, { id, task })
                   }
                   style={dragging ? getStyles({ id, tasks }, task.name) : null}
                 >
