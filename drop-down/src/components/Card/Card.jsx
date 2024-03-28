@@ -34,6 +34,9 @@ export default function Card() {
 
   const handleDragEnter = (e, taskName, params) => {
     console.log("Entering drag", params);
+    if (e.target !== dragNode.current) {
+      console.log("Target is not the same");
+    }
   };
 
   const handleDragEnd = () => {
