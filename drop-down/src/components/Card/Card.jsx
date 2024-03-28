@@ -22,37 +22,6 @@ export default function Card() {
     setDragging(true);
   };
 
-  //change the style when dragging
-  const getStyles = (params, taskName) => {
-    const currentItem = dragItem.current;
-    if (currentItem && currentItem.task && currentItem.task.name === taskName) {
-      return {
-        backgroundColor: "rgb(192, 196, 209)",
-        color: "transparent",
-      };
-    }
-    return null;
-  };
-
-  //check if current task and target task is the same
-  const handleDragEnter = (e, taskName, params) => {
-    console.log("Entering drag", params);
-    if (e.target !== dragNode.current) {
-      console.log("Target is not the same");
-    }
-  };
-
-  //Refresh after drag ends
-  const handleDragEnd = () => {
-    console.log("bye");
-    setDragging(false);
-    if (dragNode.current) {
-      dragNode.current.removeEventListener("dragend", handleDragEnd);
-    }
-    dragItem.current = null;
-    dragNode.current = null;
-  };
-
   const handleDrop = (e, newTitleId) => {
     const taskId = e.dataTransfer.getData("id");
     const taskNumber = parseInt(taskId.replace("task", ""));
@@ -81,6 +50,37 @@ export default function Card() {
     });
 
     setArray(updatedData);
+  };
+
+  //Refresh after drag ends
+  const handleDragEnd = () => {
+    console.log("bye");
+    setDragging(false);
+    if (dragNode.current) {
+      dragNode.current.removeEventListener("dragend", handleDragEnd);
+    }
+    dragItem.current = null;
+    dragNode.current = null;
+  };
+
+  //change the style when dragging
+  const getStyles = (params, taskName) => {
+    const currentItem = dragItem.current;
+    if (currentItem && currentItem.task && currentItem.task.name === taskName) {
+      return {
+        backgroundColor: "rgb(192, 196, 209)",
+        color: "transparent",
+      };
+    }
+    return null;
+  };
+
+  //check if current task and target task is the same
+  const handleDragEnter = (e, taskName, params) => {
+    console.log("Entering drag", params);
+    if (e.target !== dragNode.current) {
+      console.log("Target is not the same");
+    }
   };
 
   //when on clicked if setshowmoretasks is true make it false, if false make it true
