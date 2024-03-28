@@ -76,11 +76,33 @@ export default function Card() {
   };
 
   //check if current task and target task is the same
-  const handleDragEnter = (e, taskName, params) => {
+  /*const handleDragEnter = (e, taskName, params) => {
     console.log("Entering drag", params);
     if (e.target !== dragNode.current) {
       console.log("Target is not the same");
     }
+  };*/
+
+  const handleDragEnter = (e, taskName, params, taskIndex) => {
+    console.log("Entering drag", params);
+    const currentItem = dragItem.current;
+
+    const updatedArray = array.map((title) => {
+      if (title.id === params.id) {
+        const newTasks = [...title.tasks];
+        const index = newTasks.findIndex(
+          (task) => task.name === currentItem.task.name
+        );
+        newTasks.splice(index, 1); // Remove the task from its previous position
+        newTasks.splice(index > taskIndex ? taskIndex : taskIndex - 1, 0, {
+          name: currentItem.task.name,
+        }); // Insert the task at the new position
+        return { ...title, tasks: newTasks };
+      }
+      return title;
+    });
+
+    setArray(updatedArray);
   };
 
   //when on clicked if setshowmoretasks is true make it false, if false make it true
@@ -122,7 +144,12 @@ export default function Card() {
                   onDragEnter={
                     dragging
                       ? (e) => {
-                          handleDragEnter(e, task.name, { id, task });
+                          handleDragEnter(
+                            e,
+                            task.name,
+                            { id, task },
+                            taskIndex
+                          );
                         }
                       : null
                   }
