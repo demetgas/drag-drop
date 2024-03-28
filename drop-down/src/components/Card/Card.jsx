@@ -13,14 +13,16 @@ export default function Card() {
   const handleDragStart = (e, taskName, params) => {
     console.log("hello", params);
     e.dataTransfer.setData("id", taskName);
+    //update the info of the dragged task
     dragItem.current = { ...params, task: { name: taskName } };
+    //update the dragged item
     dragNode.current = e.target;
+    // call handleDragEnd when dragging ends
     dragNode.current.addEventListener("dragend", handleDragEnd);
-    setTimeout(() => {
-      setDragging(true);
-    }, 0);
+    setDragging(true);
   };
 
+  //change the style when dragging
   const getStyles = (params, taskName) => {
     const currentItem = dragItem.current;
     if (currentItem && currentItem.task && currentItem.task.name === taskName) {
@@ -32,6 +34,7 @@ export default function Card() {
     return null;
   };
 
+  //check if current task and target task is the same
   const handleDragEnter = (e, taskName, params) => {
     console.log("Entering drag", params);
     if (e.target !== dragNode.current) {
@@ -39,6 +42,7 @@ export default function Card() {
     }
   };
 
+  //Refresh after drag ends
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
