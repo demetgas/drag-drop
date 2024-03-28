@@ -16,7 +16,9 @@ export default function Card() {
     dragItem.current = { ...params, task: { name: taskName } }; // Set the task property
     dragItemNode.current = e.target;
     dragItemNode.current.addEventListener("dragend", handleDragEnd);
-    setDragging(true);
+    setTimeout(() => {
+      setDragging(true);
+    }, 0);
   };
 
   const getStyles = (params, taskName) => {
