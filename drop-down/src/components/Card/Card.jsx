@@ -93,7 +93,7 @@ export default function Card() {
 
   return (
     <div className="cardContainer">
-      {array.map((arrayItem, index, backgroundColor) => {
+      {array.map((arrayItem, index) => {
         const id = arrayItem.id;
         const tasks = arrayItem.tasks;
         const color = arrayItem.backgroundColor;
