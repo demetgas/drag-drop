@@ -13,7 +13,7 @@ export default function Card() {
   const handleDragStart = (e, taskName, params) => {
     console.log("hello", params);
     e.dataTransfer.setData("id", taskName);
-    dragItem.current = { ...params, task: { name: taskName } }; // Set the task property
+    dragItem.current = { ...params, task: { name: taskName } };
     dragNode.current = e.target;
     dragNode.current.addEventListener("dragend", handleDragEnd);
     setTimeout(() => {
