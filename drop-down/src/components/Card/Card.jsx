@@ -32,6 +32,10 @@ export default function Card() {
     return null;
   };
 
+  const handleDragEnter = (e, taskName, params) => {
+    console.log("Entering drag", params);
+  };
+
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
@@ -106,6 +110,13 @@ export default function Card() {
                   draggable
                   onDragStart={(e) =>
                     handleDragStart(e, task.name, { id, task })
+                  }
+                  onDragEnter={
+                    dragging
+                      ? (e) => {
+                          handleDragEnter(e, task.name, { id, task });
+                        }
+                      : null
                   }
                   style={dragging ? getStyles({ id, tasks }, task.name) : null}
                 >
