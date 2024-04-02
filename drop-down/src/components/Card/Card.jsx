@@ -76,13 +76,6 @@ export default function Card() {
   };
 
   //check if current task and target task is the same
-  /*const handleDragEnter = (e, taskName, params) => {
-    console.log("Entering drag", params);
-    if (e.target !== dragNode.current) {
-      console.log("Target is not the same");
-    }
-  };*/
-
   const handleDragEnter = (e, taskName, params, taskIndex) => {
     console.log("Entering drag", params);
     const currentItem = dragItem.current;
@@ -93,10 +86,17 @@ export default function Card() {
         const index = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
-        newTasks.splice(index, 1); // Remove the task from its previous position
-        newTasks.splice(index > taskIndex ? taskIndex : taskIndex - 1, 0, {
-          name: currentItem.task.name,
-        }); // Insert the task at the new position
+        if (index === -1) {
+          // if dropping at the end
+          if (taskIndex === newTasks.length) {
+            newTasks.push(currentItem.task);
+          }
+          // if dropping in between tasks
+          else {
+            newTasks.splice(taskIndex, 0, currentItem.task);
+          }
+        }
+
         return { ...title, tasks: newTasks };
       }
       return title;
