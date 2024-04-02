@@ -142,6 +142,9 @@ export default function Card() {
             >
               {displayTasks.map((task, taskIndex) => (
                 <div className="items">
+                  {dragging && dragItem.current.task.name === task.name && (
+                    <div className="line"></div>
+                  )}
                   <div
                     key={taskIndex}
                     className="listItem"
@@ -167,7 +170,9 @@ export default function Card() {
                   >
                     {task.name}
                   </div>
-                  {dragging && <div className="line">hello</div>}
+                  {dragging && dragItem.current.task.name === task.name && (
+                    <div className="line"></div>
+                  )}
                 </div>
               ))}
               {tasks.length > 5 && (
