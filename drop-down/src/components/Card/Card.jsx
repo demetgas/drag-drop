@@ -83,13 +83,15 @@ export default function Card() {
     const updatedArray = array.map((title) => {
       if (title.id === params.id) {
         const newTasks = [...title.tasks];
-        const index = newTasks.findIndex(
+        const dragIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
-        newTasks.splice(index, 1); // Remove the task from its previous position
-        newTasks.splice(index > taskIndex ? taskIndex : taskIndex - 1, 0, {
-          name: currentItem.task.name,
-        }); // Insert the task at the new position
+        // If the dragged task is already in this list, remove it first
+        if (dragIndex !== -1) {
+          newTasks.splice(dragIndex, 1);
+        }
+        // Insert the task at the new position
+        newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...title, tasks: newTasks };
       }
       return title;
