@@ -79,12 +79,14 @@ export default function Card() {
   //check if current task and target task is the same
   const handleDragEnter = (e, taskName, params, taskIndex) => {
     console.log("Entering drag", params);
+    // get info about the draggedItem
     const currentItem = dragItem.current;
 
     const updatedArray = array.map((title) => {
       if (title.id === params.id) {
         const newTasks = [...title.tasks];
-        const dragIndex = newTasks.findIndex(
+        //find the draggedItem index
+        const dragItem = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
 
@@ -96,11 +98,11 @@ export default function Card() {
           return title;
         }
 
-        // If the dragged task is already in this list, remove it first
-        if (dragIndex !== -1) {
-          newTasks.splice(dragIndex, 1);
+        // remove the task, If the dragged item is already in this list
+        if (dragItem !== -1) {
+          newTasks.splice(dragItem, 1);
         }
-        // Insert the task at the new position
+        // If not, insert the task at the new position
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...title, tasks: newTasks };
       }
