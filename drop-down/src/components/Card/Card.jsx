@@ -86,6 +86,15 @@ export default function Card() {
         const dragIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
+
+        // Check if the odd task is being dropped into Even card
+        if (
+          params.id === "Even" &&
+          parseInt(currentItem.task.name.replace("task", "")) % 2 !== 0
+        ) {
+          return title;
+        }
+
         // If the dragged task is already in this list, remove it first
         if (dragIndex !== -1) {
           newTasks.splice(dragIndex, 1);
