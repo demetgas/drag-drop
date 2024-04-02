@@ -113,10 +113,10 @@ export default function Card() {
   };
 
   //when on clicked if setshowmoretasks is true make it false, if false make it true
-  const toggleShowMoreTasks = (titleNameId) => {
+  const toggleShowMoreTasks = (id) => {
     setShowMoreTasks((prevState) => ({
       ...prevState,
-      [titleNameId]: !prevState[titleNameId],
+      [id]: !prevState[id],
     }));
   };
 
