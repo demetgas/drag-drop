@@ -66,7 +66,7 @@ export default function Card() {
   //change the style when dragging
   const getStyles = (params, taskName) => {
     const currentItem = dragItem.current;
-    if (currentItem && currentItem.task && currentItem.task.name === taskName) {
+    if (currentItem.task.name === taskName) {
       return {
         backgroundColor: "rgb(27, 28, 31, 0.1)",
         border: "none",
