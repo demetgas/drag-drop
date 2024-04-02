@@ -141,28 +141,33 @@ export default function Card() {
               onDragOver={(e) => e.preventDefault()}
             >
               {displayTasks.map((task, taskIndex) => (
-                <div
-                  key={taskIndex}
-                  className="listItem"
-                  draggable
-                  onDragStart={(e) =>
-                    handleDragStart(e, task.name, { id, task })
-                  }
-                  onDragEnter={
-                    dragging
-                      ? (e) => {
-                          handleDragEnter(
-                            e,
-                            task.name,
-                            { id, task },
-                            taskIndex
-                          );
-                        }
-                      : null
-                  }
-                  style={dragging ? getStyles({ id, tasks }, task.name) : null}
-                >
-                  {task.name}
+                <div className="items">
+                  <div
+                    key={taskIndex}
+                    className="listItem"
+                    draggable
+                    onDragStart={(e) =>
+                      handleDragStart(e, task.name, { id, task })
+                    }
+                    onDragEnter={
+                      dragging
+                        ? (e) => {
+                            handleDragEnter(
+                              e,
+                              task.name,
+                              { id, task },
+                              taskIndex
+                            );
+                          }
+                        : null
+                    }
+                    style={
+                      dragging ? getStyles({ id, tasks }, task.name) : null
+                    }
+                  >
+                    {task.name}
+                  </div>
+                  {dragging && <div className="line">hello</div>}
                 </div>
               ))}
               {tasks.length > 5 && (
