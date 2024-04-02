@@ -68,7 +68,7 @@ export default function Card() {
     const currentItem = dragItem.current;
     if (currentItem && currentItem.task && currentItem.task.name === taskName) {
       return {
-        backgroundColor: "rgb(80, 85, 104)",
+        backgroundColor: "rgb(27, 28, 31, 0.1)",
         border: "none",
       };
     }
