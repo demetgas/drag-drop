@@ -167,9 +167,6 @@ export default function Card() {
                   >
                     {task.name}
                   </div>
-                  {dragging && dragItem.current.task.name === task.name && (
-                    <div className="line"></div>
-                  )}
                 </div>
               ))}
               {tasks.length > 5 && (
