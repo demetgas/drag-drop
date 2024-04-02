@@ -98,7 +98,7 @@ export default function Card() {
           return title;
         }
 
-        // remove the task, If the dragged item is still in the old list
+        // remove the dragged task
         if (dragItem !== -1) {
           newTasks.splice(dragItem, 1);
         }
