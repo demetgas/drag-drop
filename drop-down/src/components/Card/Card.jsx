@@ -23,8 +23,8 @@ export default function Card() {
   };
 
   const handleDrop = (e, newTitleId) => {
-    const taskId = e.dataTransfer.getData("id");
-    const taskNumber = parseInt(taskId.replace("task", ""));
+    const taskName = e.dataTransfer.getData("id");
+    const taskNumber = parseInt(taskName.replace("task", ""));
     if (newTitleId === "Even" && taskNumber % 2 !== 0) {
       return;
     }
@@ -32,19 +32,19 @@ export default function Card() {
     const updatedData = array.map((titleName) => {
       if (titleName.id === newTitleId) {
         // if the task gets dropped to the same card return
-        if (titleName.tasks.find((task) => task.name === taskId)) {
+        if (titleName.tasks.find((task) => task.name === taskName)) {
           return titleName;
         }
         // add the task to the new card
         return {
           ...titleName,
-          tasks: [...titleName.tasks, { name: taskId }],
+          tasks: [...titleName.tasks, { name: taskName }],
         };
       } else {
         // remove the task from the old card
         return {
           ...titleName,
-          tasks: titleName.tasks.filter((task) => task.name !== taskId),
+          tasks: titleName.tasks.filter((task) => task.name !== taskName),
         };
       }
     });
