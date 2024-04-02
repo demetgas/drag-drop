@@ -141,10 +141,7 @@ export default function Card() {
               onDragOver={(e) => e.preventDefault()}
             >
               {displayTasks.map((task, taskIndex) => (
-                <div className="items">
-                  {dragging && dragItem.current.task.name === task.name && (
-                    <div className="line"></div>
-                  )}
+                <div className="items" key={taskIndex}>
                   <div
                     key={taskIndex}
                     className="listItem"
