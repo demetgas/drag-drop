@@ -21,29 +21,29 @@ export default function Card() {
     setDragging(true);
   };
 
-  const handleDrop = (e, newTitleId) => {
+  const handleDrop = (e, cardId) => {
     const taskName = e.dataTransfer.getData("id");
     const taskNumber = parseInt(taskName.replace("task", ""));
-    if (newTitleId === "Even" && taskNumber % 2 !== 0) {
+    if (cardId === "Even" && taskNumber % 2 !== 0) {
       return;
     }
 
-    const updatedData = array.map((titleName) => {
-      if (titleName.id === newTitleId) {
+    const updatedData = array.map((card) => {
+      if (card.id === cardId) {
         // if the task gets dropped to the same card return
-        if (titleName.tasks.find((task) => task.name === taskName)) {
-          return titleName;
+        if (card.tasks.find((task) => task.name === taskName)) {
+          return card;
         }
         // add the task to the new card
         return {
-          ...titleName,
-          tasks: [...titleName.tasks, { name: taskName }],
+          ...card,
+          tasks: [...card.tasks, { name: taskName }],
         };
       } else {
         // remove the task from the old card
         return {
-          ...titleName,
-          tasks: titleName.tasks.filter((task) => task.name !== taskName),
+          ...card,
+          tasks: card.tasks.filter((task) => task.name !== taskName),
         };
       }
     });
