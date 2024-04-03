@@ -15,7 +15,6 @@ export default function Card() {
     e.dataTransfer.setData("id", taskName);
     //update the info of the dragged task
     dragItem.current = { ...params, task: { name: taskName } };
-    //update the dragged item
     dragNode.current = e.target;
     // call handleDragEnd when dragging ends
     dragNode.current.addEventListener("dragend", handleDragEnd);
@@ -76,15 +75,14 @@ export default function Card() {
     return null;
   };
 
-  //check if current task and target task is the same
   const handleDragEnter = (e, taskName, params, taskIndex) => {
     console.log("Entering drag", params);
     // get info about the draggedItem
     const currentItem = dragItem.current;
 
-    const updatedArray = array.map((title) => {
-      if (title.id === params.id) {
-        const newTasks = [...title.tasks];
+    const updatedArray = array.map((card) => {
+      if (card.id === params.id) {
+        const newTasks = [...card.tasks];
         //find the draggedItem index
         const dragItem = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
@@ -95,7 +93,7 @@ export default function Card() {
           params.id === "Even" &&
           parseInt(currentItem.task.name.replace("task", "")) % 2 !== 0
         ) {
-          return title;
+          return card;
         }
 
         // remove the dragged task
@@ -104,9 +102,9 @@ export default function Card() {
         }
         // Insert the task at the new position
         newTasks.splice(taskIndex, 0, currentItem.task);
-        return { ...title, tasks: newTasks };
+        return { ...card, tasks: newTasks };
       }
-      return title;
+      return card;
     });
 
     setArray(updatedArray);
