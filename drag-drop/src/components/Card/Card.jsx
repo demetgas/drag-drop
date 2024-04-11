@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./card.css";
 import data from "../../data/data";
+import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Card() {
   const [array, setArray] = useState(data);
@@ -70,6 +72,7 @@ export default function Card() {
         backgroundColor: "rgb(27, 28, 31, 0.1)",
         border: "none",
         color: "rgb(0, 0, 0, 0.2)",
+        cursor: "pointer",
       };
     }
     return null;
@@ -163,6 +166,7 @@ export default function Card() {
                       dragging ? getStyles({ id, tasks }, task.name) : null
                     }
                   >
+                    <FontAwesomeIcon className="icon" icon={faGripVertical} />
                     {task.name}
                   </div>
                 </div>
