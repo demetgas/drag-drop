@@ -28,6 +28,7 @@
   height: 680px;
   overflow-y: auto;
   overflow-x: hidden;
+  align-items: center;
 }
 
 .listItem {
