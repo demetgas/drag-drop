@@ -25,24 +25,20 @@ export default function Card() {
 
   const handleDrop = (e, cardId) => {
     const taskName = e.dataTransfer.getData("id");
-    const taskNumber = parseInt(taskName.replace("task", ""));
-    if (cardId === "Even" && taskNumber % 2 !== 0) {
+    if (!canDropOnCard(cardId, taskName)) {
       return;
     }
 
     const updatedData = array.map((card) => {
       if (card.id === cardId) {
-        // if the task gets dropped to the same card return
         if (card.tasks.find((task) => task.name === taskName)) {
           return card;
         }
-        // add the task to the new card
         return {
           ...card,
           tasks: [...card.tasks, { name: taskName }],
         };
       } else {
-        // remove the task from the old card
         return {
           ...card,
           tasks: card.tasks.filter((task) => task.name !== taskName),
@@ -91,19 +87,13 @@ export default function Card() {
           (task) => task.name === currentItem.task.name
         );
 
-        // Check if the odd task is being dropped into Even card
-        if (
-          params.id === "Even" &&
-          parseInt(currentItem.task.name.replace("task", "")) % 2 !== 0
-        ) {
+        if (!canDropOnCard(params.id, currentItem.task.name)) {
           return card;
         }
 
-        // remove the dragged task
         if (dragItem !== -1) {
           newTasks.splice(dragItem, 1);
         }
-        // Insert the task at the new position
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
       }
@@ -119,6 +109,13 @@ export default function Card() {
       ...prevState,
       [id]: !prevState[id],
     }));
+  };
+
+  const canDropOnCard = (cardId, taskName) => {
+    if (cardId === "Even" && parseInt(taskName.replace("task", "")) % 2 !== 0) {
+      return false;
+    }
+    return true;
   };
 
   return (
