@@ -129,7 +129,7 @@ export default function Card() {
         const color = arrayItem.backgroundColor;
 
         // if showmoretasks is true display all tasks, if false display only 5
-        const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 5);
+        const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 6);
 
         return (
           <div key={id} className="card">
@@ -171,7 +171,7 @@ export default function Card() {
                   </div>
                 </div>
               ))}
-              {tasks.length > 5 && (
+              {tasks.length > 6 && (
                 <button className="btn" onClick={() => toggleShowMoreTasks(id)}>
                   {showMoreTasks[id] ? "Show Less" : "Load More"}
                 </button>
