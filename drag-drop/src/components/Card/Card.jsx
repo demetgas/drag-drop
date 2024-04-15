@@ -12,11 +12,11 @@ export default function Card() {
   const dragItem = useRef();
   const dragNode = useRef();
 
-  const handleDragStart = (e, taskName, params) => {
-    console.log("hello", params);
+  const handleDragStart = (e, taskName, cardId) => {
+    console.log("hello", cardId);
     e.dataTransfer.setData("id", taskName);
     //update the info of the dragged task
-    dragItem.current = { ...params, task: { name: taskName } };
+    dragItem.current = { ...cardId, task: { name: taskName } };
     dragNode.current = e.target;
     // call handleDragEnd when dragging ends
     dragNode.current.addEventListener("dragend", handleDragEnd);
@@ -65,7 +65,7 @@ export default function Card() {
   };
 
   //change the style when dragging
-  const getStyles = (params, taskName) => {
+  const getStyles = (id, taskName) => {
     const currentItem = dragItem.current;
     if (currentItem.task.name === taskName) {
       return {
@@ -147,9 +147,7 @@ export default function Card() {
                     key={taskIndex}
                     className="listItem"
                     draggable
-                    onDragStart={(e) =>
-                      handleDragStart(e, task.name, { id, task })
-                    }
+                    onDragStart={(e) => handleDragStart(e, task.name, id)}
                     onDragEnter={
                       dragging
                         ? (e) => {
@@ -162,9 +160,7 @@ export default function Card() {
                           }
                         : null
                     }
-                    style={
-                      dragging ? getStyles({ id, tasks }, task.name) : null
-                    }
+                    style={dragging ? getStyles(id, task.name) : null}
                   >
                     <FontAwesomeIcon className="icon" icon={faGripVertical} />
                     {task.name}
