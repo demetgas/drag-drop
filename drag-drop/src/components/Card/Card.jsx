@@ -65,7 +65,7 @@ export default function Card() {
   };
 
   //change the style when dragging
-  const getStyles = (id, taskName) => {
+  const styleTask = (id, taskName) => {
     const currentItem = dragItem.current;
     if (currentItem.task.name === taskName) {
       return {
@@ -160,7 +160,7 @@ export default function Card() {
                           }
                         : null
                     }
-                    style={dragging ? getStyles(id, task.name) : null}
+                    style={dragging ? styleTask(id, task.name) : null}
                   >
                     <FontAwesomeIcon className="icon" icon={faGripVertical} />
                     {task.name}
