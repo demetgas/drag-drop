@@ -20,12 +20,12 @@ const data = [
   },
   {
     id: "Done",
-    tasks: [{ name: "task 11" }, { name: "task 12" }, { name: "task 13" }],
+    tasks: [{ name: "task 11" }],
     backgroundColor: "#4AA561",
   },
   {
     id: "Even",
-    tasks: [{ name: "task 14" }, { name: "task 16" }, { name: "task 18" }],
+    tasks: [{ name: "task 12" }, { name: "task 14" }, { name: "task 16" }],
     backgroundColor: "#A5A14A",
   },
 ];
