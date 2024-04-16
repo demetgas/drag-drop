@@ -23,6 +23,17 @@ export default function Card() {
     setDragging(true);
   };
 
+  //Refresh after drag ends
+  const handleDragEnd = () => {
+    console.log("bye");
+    setDragging(false);
+    if (dragNode.current) {
+      dragNode.current.removeEventListener("dragend", handleDragEnd);
+    }
+    dragItem.current = null;
+    dragNode.current = null;
+  };
+
   const handleDrop = (e, cardId) => {
     const taskName = e.dataTransfer.getData("id");
     if (!canDropOnCard(cardId, taskName)) {
@@ -49,31 +60,6 @@ export default function Card() {
     });
 
     setArray(updatedData);
-  };
-
-  //Refresh after drag ends
-  const handleDragEnd = () => {
-    console.log("bye");
-    setDragging(false);
-    if (dragNode.current) {
-      dragNode.current.removeEventListener("dragend", handleDragEnd);
-    }
-    dragItem.current = null;
-    dragNode.current = null;
-  };
-
-  //change the style when dragging
-  const styleTask = (id, taskName) => {
-    const currentItem = dragItem.current;
-    if (currentItem.task.name === taskName) {
-      return {
-        backgroundColor: "rgb(27, 28, 31, 0.1)",
-        border: "none",
-        color: "rgb(0, 0, 0, 0.2)",
-        cursor: "pointer",
-      };
-    }
-    return null;
   };
 
   const handleDragEnter = (params, taskIndex) => {
@@ -105,19 +91,33 @@ export default function Card() {
     setArray(updatedArray);
   };
 
+  const canDropOnCard = (cardId, taskName) => {
+    if (cardId === "Even" && parseInt(taskName.replace("task", "")) % 2 !== 0) {
+      return false;
+    }
+    return true;
+  };
+
+  //change the style when dragging
+  const styleTask = (id, taskName) => {
+    const currentItem = dragItem.current;
+    if (currentItem.task.name === taskName) {
+      return {
+        backgroundColor: "rgb(27, 28, 31, 0.1)",
+        border: "none",
+        color: "rgb(0, 0, 0, 0.2)",
+        cursor: "pointer",
+      };
+    }
+    return null;
+  };
+
   //when on clicked if setshowmoretasks is true make it false, if false make it true
   const toggleShowMoreTasks = (id) => {
     setShowMoreTasks((prevState) => ({
       ...prevState,
       [id]: !prevState[id],
     }));
-  };
-
-  const canDropOnCard = (cardId, taskName) => {
-    if (cardId === "Even" && parseInt(taskName.replace("task", "")) % 2 !== 0) {
-      return false;
-    }
-    return true;
   };
 
   return (
