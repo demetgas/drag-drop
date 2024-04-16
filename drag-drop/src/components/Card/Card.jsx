@@ -16,7 +16,7 @@ export default function Card() {
     console.log("hello", cardId);
     e.dataTransfer.setData("id", taskName);
     //update the info of the dragged task
-    dragItem.current = { ...cardId, task: { name: taskName } };
+    dragItem.current = { cardId, task: { name: taskName } };
     dragNode.current = e.target;
     // call handleDragEnd when dragging ends
     dragNode.current.addEventListener("dragend", handleDragEnd);
@@ -28,17 +28,19 @@ export default function Card() {
     if (!canDropOnCard(cardId, taskName)) {
       return;
     }
-
     const updatedData = array.map((card) => {
       if (card.id === cardId) {
+        // if the task gets dropped to the same card return
         if (card.tasks.find((task) => task.name === taskName)) {
           return card;
         }
+        // add the task to the new card
         return {
           ...card,
           tasks: [...card.tasks, { name: taskName }],
         };
       } else {
+        // remove the task from the old card
         return {
           ...card,
           tasks: card.tasks.filter((task) => task.name !== taskName),
@@ -74,7 +76,7 @@ export default function Card() {
     return null;
   };
 
-  const handleDragEnter = (e, taskName, params, taskIndex) => {
+  const handleDragEnter = (params, taskIndex) => {
     console.log("Entering drag", params);
     // get info about the draggedItem
     const currentItem = dragItem.current;
@@ -148,12 +150,7 @@ export default function Card() {
                     onDragEnter={
                       dragging
                         ? (e) => {
-                            handleDragEnter(
-                              e,
-                              task.name,
-                              { id, task },
-                              taskIndex
-                            );
+                            handleDragEnter({ id, task }, taskIndex);
                           }
                         : null
                     }
