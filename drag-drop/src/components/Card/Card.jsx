@@ -67,37 +67,37 @@ export default function Card() {
   const handleDragEnter = (params, taskIndex) => {
     console.log("Entering drag", params);
     setDragOverCard(params.id);
-
+  
     const currentItem = dragItem.current;
-
+  
     const updatedArray = array.map((card) => {
       if (card.id === params.id) {
         const newTasks = [...card.tasks];
         const dragItemIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
-
+  
         if (!checkEven(params.id, currentItem.task.name)) {
           return card;
         }
+  
         if (dragItemIndex !== -1) {
           newTasks.splice(dragItemIndex, 1);
         }
+  
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
-      } else if (card.id === currentItem.cardId) {
+      } else if (card.id === currentItem.cardId && card.id !== params.id && checkEven(params.id, currentItem.task.name)) {
         return {
           ...card,
-          tasks: card.tasks.filter(
-            (task) => task.name !== currentItem.task.name
-          ),
+          tasks: card.tasks.filter((task) => task.name !== currentItem.task.name),
         };
       }
       return card;
     });
     setArray(updatedArray);
   };
-
+  
   const checkEven = (cardId, taskName) => {
     if (cardId === "Even" && parseInt(taskName.replace("task", "")) % 2 !== 0) {
       return false;
