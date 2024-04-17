@@ -53,7 +53,7 @@ export default function Card() {
           tasks: [...card.tasks, { name: taskName }],
         };
       } else {
-        // remove the task from the old card
+        // remove the task
         return {
           ...card,
           tasks: card.tasks.filter((task) => task.name !== taskName),
