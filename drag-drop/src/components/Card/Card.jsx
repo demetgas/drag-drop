@@ -8,7 +8,7 @@ export default function Card() {
   const [array, setArray] = useState(data);
   const [showMoreTasks, setShowMoreTasks] = useState({});
   const [dragging, setDragging] = useState(false);
-  const [dragOverCard, setDragOverCard] = useState(null); // State to track the card being dragged over
+  const [dragOverCard, setDragOverCard] = useState(null);
 
   const dragItem = useRef();
   const dragNode = useRef();
