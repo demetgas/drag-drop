@@ -80,7 +80,6 @@ export default function Card() {
         if (!checkEven(params.id, currentItem.task.name)) {
           return card;
         }
-
         if (dragItemIndex !== -1) {
           newTasks.splice(dragItemIndex, 1);
         }
@@ -96,7 +95,6 @@ export default function Card() {
       }
       return card;
     });
-
     setArray(updatedArray);
   };
 
