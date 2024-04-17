@@ -8,6 +8,7 @@ export default function Card() {
   const [array, setArray] = useState(data);
   const [showMoreTasks, setShowMoreTasks] = useState({});
   const [dragging, setDragging] = useState(false);
+  const [dragOverCard, setDragOverCard] = useState(null); // State to track the card being dragged over
 
   const dragItem = useRef();
   const dragNode = useRef();
@@ -27,6 +28,7 @@ export default function Card() {
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
+    setDragOverCard(null); // Reset the card being dragged over
     if (dragNode.current) {
       dragNode.current.removeEventListener("dragend", handleDragEnd);
     }
@@ -64,6 +66,8 @@ export default function Card() {
 
   const handleDragEnter = (params, taskIndex) => {
     console.log("Entering drag", params);
+    setDragOverCard(params.id); // Set the card being dragged over
+
     // get info about the draggedItem
     const currentItem = dragItem.current;
 
@@ -99,7 +103,7 @@ export default function Card() {
   };
 
   //change the style when dragging
-  const styleTask = (id, taskName) => {
+  const styleTask = (taskName) => {
     const currentItem = dragItem.current;
     if (currentItem.task.name === taskName) {
       return {
@@ -107,6 +111,16 @@ export default function Card() {
         border: "none",
         color: "rgb(0, 0, 0, 0.2)",
         cursor: "pointer",
+      };
+    }
+    return null;
+  };
+
+  const styleCard = (id) => {
+    // Apply a different border color if this card is being dragged over
+    if (id === dragOverCard) {
+      return {
+        border: "1px solid white", // You can adjust the color and style here
       };
     }
     return null;
@@ -131,7 +145,11 @@ export default function Card() {
         const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 6);
 
         return (
-          <div key={id} className="card">
+          <div
+            key={id}
+            className="card"
+            style={dragging ? styleCard(id) : null}
+          >
             <div className="header" style={{ backgroundColor: color }}>
               <div className="title">{id}</div>
             </div>
@@ -154,7 +172,7 @@ export default function Card() {
                           }
                         : null
                     }
-                    style={dragging ? styleTask(id, task.name) : null}
+                    style={dragging ? styleTask(task.name) : null}
                   >
                     <FontAwesomeIcon className="icon" icon={faGripVertical} />
                     {task.name}
