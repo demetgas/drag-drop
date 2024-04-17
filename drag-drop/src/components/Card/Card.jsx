@@ -66,7 +66,7 @@ export default function Card() {
 
   const handleDragEnter = (params, taskIndex) => {
     console.log("Entering drag", params);
-    setDragOverCard(params.id); // Set the card being dragged over
+    setDragOverCard(params.id);
 
     // get info about the draggedItem
     const currentItem = dragItem.current;
