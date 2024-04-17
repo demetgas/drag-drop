@@ -68,13 +68,11 @@ export default function Card() {
     console.log("Entering drag", params);
     setDragOverCard(params.id);
 
-    // get info about the draggedItem
     const currentItem = dragItem.current;
 
     const updatedArray = array.map((card) => {
       if (card.id === params.id) {
         const newTasks = [...card.tasks];
-        // find the draggedItem index
         const dragItemIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
@@ -84,12 +82,11 @@ export default function Card() {
         }
 
         if (dragItemIndex !== -1) {
-          newTasks.splice(dragItemIndex, 1); // remove the task from its previous position
+          newTasks.splice(dragItemIndex, 1);
         }
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
       } else if (card.id === currentItem.cardId) {
-        // Remove the task from its previous card
         return {
           ...card,
           tasks: card.tasks.filter(
