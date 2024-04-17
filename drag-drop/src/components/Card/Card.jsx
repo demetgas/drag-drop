@@ -74,8 +74,8 @@ export default function Card() {
     const updatedArray = array.map((card) => {
       if (card.id === params.id) {
         const newTasks = [...card.tasks];
-        //find the draggedItem index
-        const dragItem = newTasks.findIndex(
+        // find the draggedItem index
+        const dragItemIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
 
@@ -83,11 +83,19 @@ export default function Card() {
           return card;
         }
 
-        if (dragItem !== -1) {
-          newTasks.splice(dragItem, 1);
+        if (dragItemIndex !== -1) {
+          newTasks.splice(dragItemIndex, 1); // remove the task from its previous position
         }
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
+      } else if (card.id === currentItem.cardId) {
+        // Remove the task from its previous card
+        return {
+          ...card,
+          tasks: card.tasks.filter(
+            (task) => task.name !== currentItem.task.name
+          ),
+        };
       }
       return card;
     });
