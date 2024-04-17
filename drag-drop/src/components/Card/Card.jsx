@@ -28,7 +28,7 @@ export default function Card() {
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
-    setDragOverCard(null); // Reset the card being dragged over
+    setDragOverCard(null);
     if (dragNode.current) {
       dragNode.current.removeEventListener("dragend", handleDragEnd);
     }
@@ -117,10 +117,9 @@ export default function Card() {
   };
 
   const styleCard = (id) => {
-    // Apply a different border color if this card is being dragged over
     if (id === dragOverCard) {
       return {
-        border: "1px solid white", // You can adjust the color and style here
+        border: "2px solid white",
       };
     }
     return null;
