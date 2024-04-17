@@ -38,7 +38,7 @@ export default function Card() {
 
   const handleDrop = (e, cardId) => {
     const taskName = e.dataTransfer.getData("id");
-    if (!canDropOnCard(cardId, taskName)) {
+    if (!checkEven(cardId, taskName)) {
       return;
     }
     const updatedData = array.map((card) => {
@@ -79,7 +79,7 @@ export default function Card() {
           (task) => task.name === currentItem.task.name
         );
 
-        if (!canDropOnCard(params.id, currentItem.task.name)) {
+        if (!checkEven(params.id, currentItem.task.name)) {
           return card;
         }
 
@@ -95,7 +95,7 @@ export default function Card() {
     setArray(updatedArray);
   };
 
-  const canDropOnCard = (cardId, taskName) => {
+  const checkEven = (cardId, taskName) => {
     if (cardId === "Even" && parseInt(taskName.replace("task", "")) % 2 !== 0) {
       return false;
     }
@@ -119,7 +119,7 @@ export default function Card() {
   const styleCard = (id) => {
     if (id === dragOverCard) {
       const draggedItem = dragItem.current;
-      if (canDropOnCard(id, draggedItem.task.name)) {
+      if (checkEven(id, draggedItem.task.name)) {
         return {
           border: "2px solid white",
         };
