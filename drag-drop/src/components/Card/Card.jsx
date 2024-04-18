@@ -69,6 +69,9 @@ export default function Card() {
     setDragOverCard(params.id);
 
     const currentItem = dragItem.current;
+    if (!checkEven(params.id, currentItem.task.name)) {
+      return;
+    }
 
     const updatedArray = array.map((card) => {
       if (card.id === params.id) {
@@ -76,10 +79,6 @@ export default function Card() {
         const dragItemIndex = newTasks.findIndex(
           (task) => task.name === currentItem.task.name
         );
-
-        if (!checkEven(params.id, currentItem.task.name)) {
-          return card;
-        }
 
         if (dragItemIndex !== -1) {
           newTasks.splice(dragItemIndex, 1);
