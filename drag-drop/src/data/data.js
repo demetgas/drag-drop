@@ -15,17 +15,22 @@ const data = [
   },
   {
     id: "In Progress",
-    tasks: [{ name: "task 9" }, { name: "task 10" }],
+    tasks: [{ name: "task 9" }, { name: "task 10" }, { name: "task 11" }],
     backgroundColor: "#4A71A5",
   },
   {
     id: "Done",
-    tasks: [{ name: "task 11" }],
+    tasks: [{ name: "task 12" }, { name: "task 13" }],
     backgroundColor: "#4AA561",
   },
   {
     id: "Even",
-    tasks: [{ name: "task 12" }, { name: "task 14" }, { name: "task 16" }],
+    tasks: [
+      { name: "task 14" },
+      { name: "task 16" },
+      { name: "task 18" },
+      { name: "task 20" },
+    ],
     backgroundColor: "#A5A14A",
   },
 ];
