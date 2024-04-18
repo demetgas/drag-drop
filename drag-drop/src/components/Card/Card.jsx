@@ -16,15 +16,12 @@ export default function Card() {
   const handleDragStart = (e, taskName, cardId) => {
     console.log("hello", cardId);
     e.dataTransfer.setData("id", taskName);
-    //update the info of the dragged task
     dragItem.current = { cardId, task: { name: taskName } };
     dragNode.current = e.target;
-    // call handleDragEnd when dragging ends
     dragNode.current.addEventListener("dragend", handleDragEnd);
     setDragging(true);
   };
 
-  //Refresh after drag ends
   const handleDragEnd = () => {
     console.log("bye");
     setDragging(false);
@@ -43,17 +40,14 @@ export default function Card() {
     }
     const updatedData = array.map((card) => {
       if (card.id === cardId) {
-        // if the task gets dropped to the same card return
         if (card.tasks.find((task) => task.name === taskName)) {
           return card;
         }
-        // add the task to the new card
         return {
           ...card,
           tasks: [...card.tasks, { name: taskName }],
         };
       } else {
-        // remove the task
         return {
           ...card,
           tasks: card.tasks.filter((task) => task.name !== taskName),
@@ -86,7 +80,7 @@ export default function Card() {
 
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
-      } else if (card.id === currentItem.cardId && card.id !== params.id) {
+      } else if (card.id === currentItem.cardId) {
         return {
           ...card,
           tasks: card.tasks.filter(
