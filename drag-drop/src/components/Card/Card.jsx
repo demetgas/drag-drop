@@ -160,7 +160,7 @@ export default function Card() {
                 <div className="items" key={taskIndex}>
                   <div
                     key={taskIndex}
-                    className="listItem"
+                    className={`listItem ${dragging ? "dragging" : ""}`}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task.name, id)}
                     onDragEnter={

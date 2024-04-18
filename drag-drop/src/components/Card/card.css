@@ -58,7 +58,11 @@
     color: white;
   }
 }
-
+.listItem.dragging:hover {
+  transform: none;
+  background-color: rgb(224, 225, 228);
+  color: black;
+}
 .btn {
   border-radius: 5px;
   padding: 10px;
