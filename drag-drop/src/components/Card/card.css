@@ -62,6 +62,9 @@
   transform: none;
   background-color: rgb(224, 225, 228);
   color: black;
+  .icon {
+    color: rgb(125, 120, 120);
+  }
 }
 .btn {
   border-radius: 5px;
