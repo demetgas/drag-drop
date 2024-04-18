@@ -80,7 +80,7 @@ export default function Card() {
 
         newTasks.splice(taskIndex, 0, currentItem.task);
         return { ...card, tasks: newTasks };
-      } else if (card.id === currentItem.cardId) {
+      } else if (card.id !== currentItem.cardId) {
         return {
           ...card,
           tasks: card.tasks.filter(
