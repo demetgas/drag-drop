@@ -99,7 +99,6 @@ export default function Card() {
     return true;
   };
 
-  //change the task style when dragging
   const styleTask = (taskName) => {
     const currentItem = dragItem.current;
     if (currentItem.task.name === taskName) {
@@ -112,7 +111,6 @@ export default function Card() {
     }
     return null;
   };
-  //change the card style when dragging
   const styleCard = (id) => {
     if (id === dragOverCard) {
       const draggedItem = dragItem.current;
@@ -124,7 +122,6 @@ export default function Card() {
     }
     return null;
   };
-  //when on clicked if setshowmoretasks is true make it false, if false make it true
   const toggleShowMoreTasks = (id) => {
     setShowMoreTasks((prevState) => ({
       ...prevState,
@@ -139,7 +136,6 @@ export default function Card() {
         const tasks = arrayItem.tasks;
         const color = arrayItem.backgroundColor;
 
-        // if showmoretasks is true display all tasks, if false display only 5
         const displayTasks = showMoreTasks[id] ? tasks : tasks.slice(0, 6);
 
         return (
