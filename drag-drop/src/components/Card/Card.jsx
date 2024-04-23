@@ -148,7 +148,8 @@ export default function Card() {
               <div className="title">
                 {id}
               </div>
-              <div className="title">({tasks.length} tasks)</div>
+        {tasks.length > 0 ? 
+        <div class="title">({ tasks.length} tasks)</div> : null}
             </div>
             <div
               className="list"
