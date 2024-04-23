@@ -145,7 +145,9 @@ export default function Card() {
             style={dragging ? styleCard(id) : null}
           >
             <div className="header" style={{ backgroundColor: color }}>
-              <div className="title">{id}</div>
+              <div className="title">
+                {id} - ({tasks.length} tasks)
+              </div>
             </div>
             <div
               className="list"
