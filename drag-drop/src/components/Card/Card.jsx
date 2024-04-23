@@ -146,8 +146,9 @@ export default function Card() {
           >
             <div className="header" style={{ backgroundColor: color }}>
               <div className="title">
-                {id} - ({tasks.length} tasks)
+                {id}
               </div>
+              <div className="title">({tasks.length} tasks)</div>
             </div>
             <div
               className="list"
