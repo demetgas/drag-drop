@@ -107,6 +107,7 @@ export default function Card() {
         border: "none",
         color: "rgb(0, 0, 0, 0.2)",
         cursor: "pointer",
+        textDecoration: "underline"
       };
     }
     return null;
