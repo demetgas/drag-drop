@@ -145,11 +145,14 @@ export default function Card() {
             style={dragging ? styleCard(id) : null}
           >
             <div className="header" style={{ backgroundColor: color }}>
-              <div className="title">
-                {id}
-              </div>
-        {tasks.length > 0 ? 
-        <div class="title">({ tasks.length} tasks)</div> : null}
+              <div className="title">{id}</div>
+              {tasks.length === 0 ? (
+                <div class="title">- No tasks available -</div>
+              ) : (
+                <div class="title">
+                  - {tasks.length} {tasks.length === 1 ? "task" : "tasks"} -
+                </div>
+              )}
             </div>
             <div
               className="list"
