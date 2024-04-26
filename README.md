@@ -16,7 +16,7 @@ After transitioning to a new position, the previous card reverts to its default 
 
 ![Screenshot 2024-04-26 113749](https://github.com/demetgas/drag-n-drop/assets/77278951/c4e44ec8-3561-41f8-ad19-c624f01cb0a3)
 
-Allowed tasks to be easily rearranged within their own card.
+Also allowes tasks to be easily rearranged within their own card.
 
 ![Screenshot 2024-04-26 114219](https://github.com/demetgas/drag-n-drop/assets/77278951/3db73232-f1a1-4f5c-afba-dd80bb6f4854)
 
