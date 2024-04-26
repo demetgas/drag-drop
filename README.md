@@ -8,7 +8,7 @@ When a task gets dragged the styling of the current card and the current task ch
 
 ![Screenshot 2024-04-26 113719](https://github.com/demetgas/drag-n-drop/assets/77278951/f840ab69-3b32-4690-90cc-ab6dc850494f)
 
-After entering the task the old card's style becomes teh default style and the current card chnages its style. When entered to new card the task gets removed from its old position and gets added to its new position.  
+After entering to another position the old card style gets the default styling again and the current card chnages its style. When entered to new card the task gets removed from its old position and gets added to its new position.  
 
 ![Screenshot 2024-04-26 113749](https://github.com/demetgas/drag-n-drop/assets/77278951/c4e44ec8-3561-41f8-ad19-c624f01cb0a3)
 
