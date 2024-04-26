@@ -12,7 +12,7 @@ Implemented visual feedback by updating the styling of both the current card and
 
 ![Screenshot 2024-04-26 113719](https://github.com/demetgas/drag-n-drop/assets/77278951/f840ab69-3b32-4690-90cc-ab6dc850494f)
 
-After entering to another position the old card style gets the default styling again and the current card chnages its style. When entered to new card the task gets removed from its old position and gets added to its new position.  
+After transitioning to a new position, the previous card reverts to its default style, while the current card adopts a new style. As the task enters a new card, it seamlessly relocates from its former position to its new designated spot."
 
 ![Screenshot 2024-04-26 113749](https://github.com/demetgas/drag-n-drop/assets/77278951/c4e44ec8-3561-41f8-ad19-c624f01cb0a3)
 
