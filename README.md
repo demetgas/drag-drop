@@ -20,6 +20,6 @@ In Even card only even numbered tasks are allowed to be dropped, it doesn't even
 
 ![Screenshot 2024-04-26 114354](https://github.com/demetgas/drag-n-drop/assets/77278951/41f133fc-1f7c-42d1-bc09-0381ef85586f)
 
-Even numbered tasaks can easily get dropped to the Even card.
+Even numbered tasks can easily get dropped to the Even card.
 
 ![Screenshot 2024-04-26 114414](https://github.com/demetgas/drag-n-drop/assets/77278951/b96572f0-05e7-4aaa-84c3-23ac653dc0c9)
