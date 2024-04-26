@@ -1,4 +1,4 @@
-Implemented drag-and-drop functionality in a ReactJS application without relying on any external libraries.
+Implemented drag-and-drop functionality in a ReactJS application, no external libraries needed.
 
 Designed four draggable cards to manage tasks efficiently.
 
