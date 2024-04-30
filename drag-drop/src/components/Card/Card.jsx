@@ -1,17 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./card.css";
 import data from "../../data/data";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Card() {
-  const [array, setArray] = useState(data);
+  const [array, setArray] = useState(() => {
+    const storedData = localStorage.getItem("tasks");
+    return storedData ? JSON.parse(storedData) : data;
+  });
   const [showMoreTasks, setShowMoreTasks] = useState({});
   const [dragging, setDragging] = useState(false);
   const [dragOverCard, setDragOverCard] = useState(null);
 
   const dragItem = useRef();
   const dragNode = useRef();
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(array));
+  }, [array]);
 
   const handleDragStart = (e, taskName, cardId) => {
     console.log("hello", cardId);
@@ -107,7 +114,7 @@ export default function Card() {
         border: "none",
         color: "rgb(0, 0, 0, 0.2)",
         cursor: "pointer",
-        textDecoration: "underline"
+        textDecoration: "underline",
       };
     }
     return null;
